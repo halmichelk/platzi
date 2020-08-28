@@ -817,7 +817,9 @@ html {
 									}
 							}
 
-
+.scroll_fixed{
+			position: fixed !important;
+			}
 
 	</style>
 </head>
@@ -1635,7 +1637,7 @@ minificar
 */
 
 scroll_body = function(){ console.log( window.scrollY )
-						document.getElementById('bar').style.position = window.scrollY < 0? 'fixed' : 'absolute';
+						document.getElementById('bar').className = window.scrollY < 0? 'scroll_fixed' : '';
 						}
 
 </script>
