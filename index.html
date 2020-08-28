@@ -1634,7 +1634,7 @@ platzi 		9Fdr8Xb1Dmo
 minificar
 */
 
-scroll_body = function(){
+scroll_body = function(){ console.log( window.scrollY )
 						document.getElementById('bar').style.position = window.scrollY < 0? 'fixed' : 'absolute';
 						}
 
