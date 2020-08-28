@@ -1637,6 +1637,9 @@ platzi 		9Fdr8Xb1Dmo
 							document.getElementById('buy_3').style.backgroundColor = 'hsl('+body_color+',5%,80%)';
 							document.getElementById('borrador').style.backgroundColor =
 							document.getElementById('back').style.backgroundColor ='hsl('+body_color+',10%,24%)';
+
+
+							document.head.insertAdjacentHTML("beforeend", '<style>body::-webkit-scrollbar{ width: 12px; background: hsl('+body_color+',10%,24%)}</style>')
 						//	document.body.style.background = 'hsl('+body_color+',10%,24%)';
 							}, 500)
 						}, 1000)
