@@ -45,7 +45,7 @@ html{
 			body::-webkit-scrollbar-thumb{ background-color: #fff; border-radius: 0px; }
 
 		body{
-			background: hsl(248, 10%, 24%);
+			background: hsl(248, 100%, 8%); /*hsl(248, 10%, 24%);*/
 			overflow-x: hidden;
 			padding-bottom: 200px;
 			min-width: 1200px !important;
@@ -818,6 +818,17 @@ html{
 							}
 
 
+							#back{
+								position: fixed;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								background: hsl(248, 10%, 24%);
+								z-index: -1;
+								}
+
+
 	</style>
 </head>
 
@@ -864,6 +875,8 @@ html{
 <body>
 	<!--
 	-->
+
+	<div id="back"></div>
 	
 	<div id="borrador">
 						<div>
@@ -1623,7 +1636,8 @@ platzi 		9Fdr8Xb1Dmo
 							document.getElementById('buy_2').style.backgroundColor =
 							document.getElementById('buy_3').style.backgroundColor = 'hsl('+body_color+',5%,80%)';
 							document.getElementById('borrador').style.backgroundColor =
-							document.body.style.background = 'hsl('+body_color+',10%,24%)';
+							document.getElementById('back').style.backgroundColor ='hsl('+body_color+',10%,24%)';
+						//	document.body.style.background = 'hsl('+body_color+',10%,24%)';
 							}, 500)
 						}, 1000)
 
