@@ -75,11 +75,12 @@ html {
 						}*/
 
 		#bar{
-			position: absolute;
+			position: fixed;
 			top: 0;
 			width: 100%;
 			height: 72px;
 			background: hsl(248, 100%, 8%);
+			z-index: 100;
 			}
 
 			#bar_wrap{
@@ -817,9 +818,6 @@ html {
 									}
 							}
 
-.scroll_fixed{
-			position: fixed !important;
-			}
 
 	</style>
 </head>
@@ -864,7 +862,7 @@ html {
 
 
 
-<body onscroll='scroll_body()'>
+<body>
 	<!--
 	-->
 	
@@ -1635,10 +1633,6 @@ platzi 		9Fdr8Xb1Dmo
 /*
 minificar
 */
-
-scroll_body = function(){ console.log( window.scrollY )
-						document.getElementById('bar').className = window.scrollY < 0? 'scroll_fixed' : '';
-						}
 
 </script>
 
