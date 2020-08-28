@@ -1622,14 +1622,14 @@ platzi 		9Fdr8Xb1Dmo
 						setInterval(function(){ body_color = body_color > 360? 0 : body_color + 1;
 							document.getElementById('buy_1').style.backgroundColor =
 							document.getElementById('buy_2').style.backgroundColor =
-							document.getElementById('buy_3').style.backgroundColor = 'hsl('+body_color+',10%,70%)';
+							document.getElementById('buy_3').style.backgroundColor = 'hsl('+body_color+',10%,80%)';
 							document.getElementById('borrador').style.backgroundColor =
 							document.body.style.background = 'hsl('+body_color+',10%,24%)';
 							}, 500)
 						}, 1000)
 
 
-	document.body.addEventListener("scroll",function(){
+	document.body.addEventListener("scroll",function(){ console.log(window.scrollY)
 														document.getElementById('bar').style.position = window.scrollY < 0? 'fixed' : 'absolute';
 														})
 
