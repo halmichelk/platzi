@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Platzi</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=1">
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
+	<link rel="shortcut icon" href="platzi_favicon.png" />
+	<link rel="icon" sizes="192x192" href="platzi_favicon.png">
+	<style type="text/css">
+
+html {
+  scroll-behavior: smooth;
+}
+
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			-webkit-tap-highlight-color: transparent;
+     		scrollbar-color: #00000066 transparent;  // in firefox the scroll was transparent so I could not see it.
+			}
+
+			::-moz-selection { color: black;background: #fff;}
+			::selection { color: black; background: #fff; }
+
+			:-moz-placeholder{ color: #fff; opacity: 1 }
+			::-moz-placeholder{ color: #fff; opacity: 1 }
+			::placeholder{ color: #fff; opacity: 1 }
+			::-ms-input-placeholder{ color: #fff }
+			:-ms-input-placeholder{ color: #fff }
+
+			.placehold:-moz-placeholder{ color: #ffffff66 }
+			.placehold::-moz-placeholder{ color: #ffffff66 }
+			.placehold::placeholder{ color: #ffffff66 }
+			.placehold::-ms-input-placeholder{ color: #ffffff66 }
+			.placehold:-ms-input-placeholder{ color: #ffffff66 }
+
+
+			body::-webkit-scrollbar{ width: 12px; }
+			body::-webkit-scrollbar-track { border-radius: 0px }
+			body::-webkit-scrollbar-thumb{ background-color: #fff; border-radius: 0px; }
+
+		body{
+			background: hsl(248, 10%, 24%);
+			overflow-x: hidden;
+			padding-bottom: 200px;
+			min-width: 1200px !important;
+			}
+
+		#splashw,
+		#splash,
+		#borrador{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url(platzi_logo.png) hsl(234, 10%, 30%);
+				background-repeat: no-repeat;
+				background-size: 120px;
+				background-position: center;
+				z-index: 1000;
+				min-height: 480px;
+				}
+				#splashw{
+						background: url(platzi_logo.png) #fff;
+						background-repeat: no-repeat;
+						background-size: 120px;
+						background-position: center;
+						z-index: 2000;
+						}
+
+		#bar{
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 72px;
+			background: hsl(248, 100%, 8%);
+			}
+
+			#bar_wrap{
+					position: absolute;
+					height: 100%;
+					left: 48px;
+					right: 48px;
+					}
+					#bar_logo{
+							width: 32px;
+							height: 100%;
+							background: url(platzi_logo.png);
+							background-size: 32px;
+							background-repeat: no-repeat;
+							background-position: center;
+							}
+					#bar_wrap_input{
+									position: absolute;
+									height: 100%;
+									top: 0;
+									left: 42px;
+									right: 50px;
+									background: url(glass.png), url(glass.png);
+									background-size: 28px;
+									background-repeat: no-repeat;
+									background-position: right;
+									}
+									#bar_input{
+												position: absolute;
+												height: 100%;
+												width: 100%;
+												padding-right: 38px;
+												box-sizing: border-box;
+												background: transparent;
+												outline: none;
+												border: 0;
+												color: white;
+												font-size: 24px;
+												letter-spacing: .5px;
+												font-family: 'Comfortaa', cursive;
+												}
+												#bar_input.placehold{
+																	font-family: sans-serif !important;
+																	font-size: 20px;
+																	}
+
+					#bar_login{
+								position: absolute;
+								top: 0;
+								right: 0;
+								height: 72px;
+								line-height: 72px;
+								color: #57dc00;
+								letter-spacing: .5px;
+								}
+
+		#menu{
+			position: absolute;
+			top: 80px;
+			width: 100%;
+			height: 24px;
+			line-height: 24px;
+			padding: 0 48px;
+			box-sizing: border-box;
+			color: #ffffff99;
+			font-size: 13px;
+			letter-spacing: .5px;
+			z-index: 2;
+			}
+			#menu span{
+					padding: 0 6px;
+					cursor: pointer;
+					}
+					#menu span:hover{
+									color: #57dc00; 
+									}
+					#menu span a{
+								color: inherit !important;
+								text-decoration: none !important;
+								}
+					.float_right{
+								float: right
+								}
+
+		#lives{
+				position: absolute;
+				top: 48px;
+				width: 100%;
+				height: 360px;
+				}
+				.lives_window{
+							position: absolute;
+							top: 60px;
+							left: 50%;
+							background: #fff;
+							border-radius: 6px;
+						/*	box-shadow: 1px 1px 4px 0 black; */
+							}
+
+							.on_label{
+									position: absolute;
+									right: 0;
+									top: 14px;
+									padding: 4px 12px;
+									z-index: 1;
+									font-size: 12px;
+									font-weight: bold;
+									border-radius: 1px;
+									letter-spacing: .5px;
+									cursor: default;
+									}
+
+									.on_label.live_on{ background: #57dc00; }
+									.on_label.live_off{ background: hsl(248, 100%, 8%); color: #57dc00; }
+
+							.on_left{
+									width: 350px;
+									height: 260px;
+									margin-top: 20px;
+									margin-left: -590px;
+									overflow-x: hidden;
+									overflow-y: auto;
+									}
+							.on_live{
+									width: 528px;
+									height: 296px; 
+									margin-left: -264px;
+									z-index: 1;
+									border-radius: 0 !important;
+									}
+									#on_live_wrapper{
+													width: 100%;
+													height: 100%;
+												/*	border-radius: 6px;*/
+													overflow: hidden;
+													}
+
+							.on_chat{
+									width: 330px;
+									height: 260px;
+									margin-top: 20px;
+									margin-left: 260px;
+									overflow: hidden;
+									}
+									#on_chat_wrapper{
+													position: absolute;
+													width: 100%;
+												/*	top: 0;*/
+													bottom: 12px;
+													padding: 0 16px;
+													box-sizing: border-box;
+													overflow: auto;
+													}
+													.on_chat_message{
+																	display: flex;
+																	margin-top: 14px;
+																	}
+																	.on_chat_message img{
+																						width: 36px;
+																						height: 36px;
+																						border-radius: 30%;
+																						background: url(platzi_logo.png);
+																						background-size: 30px;
+																						background-repeat: no-repeat;
+																						background-position: center;
+																						}
+																	.on_chat_message_text{
+																						display: inline-block;
+																						float: left;
+																						margin-left: 8px;
+																						font-size: 12px;
+																						max-width: 248px;
+																						cursor: default;
+																						}
+																						.on_chat_message_text b{ font-size: 10px }
+
+
+							#on_live_on{
+										background: url(platzi_logo.png) hsl(234, 100%, 8%);
+										background-position: center center;
+										background-size: 64px;
+										background-repeat: no-repeat;
+									/*	box-shadow: 0 1px 6px 1px black, 0 0 0 1px #00000066; */
+										}
+										#on_live_on_rotule{
+														position: absolute;
+														margin: 8px 0 0 10px;
+														width: 44px;
+														height: 44px;
+														background: url(platzi_white.png) hsl(234, 100%, 8%);
+														background-repeat: no-repeat;
+														border-radius: 50%;
+														background-size: 24px;
+														background-position: center;
+														cursor: pointer;
+														}
+														#on_live_on:hover #on_live_on_rotule{
+																							background: url(platzi_logo.png) hsl(234, 100%, 8%);
+																							background-repeat: no-repeat;
+																							border-radius: 50%;
+																							background-size: 24px;
+																							background-position: center;
+																							}
+
+
+							#on_live_one_information{
+												position: absolute;
+												top: 350px;
+												width: 330px;
+												left: 50%;
+												margin-left: -590px;
+												font-size: 12px;
+												color: #ffffff99;
+												cursor: default;
+												}
+												#lives_students{
+																padding: 50px 0 60px 0;
+																box-sizing: border-box;
+																overflow: hidden;
+																height: auto;
+																}
+												#lives_students .img_live_student{
+																	width: 66px;
+																	height: 66px;
+																	margin: 0;
+																	display: block;
+																	float: left;
+																	cursor: pointer;
+																	}
+																	.img_live_student:hover{ box-shadow: inset 0 0 0 3px #fff }
+																	.img_live_student.writting:after{ 
+																									content: '';
+																									width: 10px;
+																									height: 10px;
+																									border-radius: 50%;
+																									background: lime;																									display: block;
+																									margin: 6px
+																									}
+
+
+																	.live_laterals{ overflow: auto; }
+																	.live_laterals::-moz-scrollbar{ width: 0px !important; }
+																	.live_laterals::-moz-scrollbar-track { border-radius: 0px }
+																	.live_laterals::-moz-scrollbar-thumb{ background-color: #00000066; border-radius: 0px; }
+																	.live_laterals::-webkit-scrollbar{ width: 0px !important; }
+																	.live_laterals::-webkit-scrollbar-track { border-radius: 0px }
+																	.live_laterals::-webkit-scrollbar-thumb{ background-color: #00000066; border-radius: 0px; }
+
+
+
+							#on_live_two_information{
+												position: absolute;
+												top: 350px;
+												width: 330px;
+												left: 50%;
+												margin-left: 260px;
+												font-size: 12px;
+												text-align: right;
+												color: #ffffff99;
+												}
+
+
+
+							#on_live_information{
+											position: absolute;
+											top: 370px;
+											width: 600px;
+											left: 50%;
+											margin-left: -300px;
+											font-size: 12px;
+											cursor: default;
+											}
+											#on_live_information_avatar{
+																	width: 48px;
+																	height: 48px;
+																	float: left;
+																	background: url(https://yt3.ggpht.com/a/AATXAJyjhPLjpkZ54OWzkeD3n6AwZNZE-AigHF_d7PU_kb0=s48-c-k-c0xffffffff-no-rj-mo);
+																	background-size: cover !important;
+																	background-position: center !important;
+																	background-color: hsl(234, 100%, 8%) !important;
+																	border-radius: 50%;
+																	}
+											#on_live_information_description{
+																		width: 540px;
+																		float: right;
+																		color: #ffffff99;
+																		}
+
+
+							.lives_window iframe{
+												margin: -2px 0 -1px 0;
+												}
+
+
+		#promo{
+			width: 100%;
+			padding: 0 48px;
+			margin-top: 500px;
+			text-align: center;
+			color: #ffffff;
+			font-size: 36px;
+			font-weight: bold;
+			box-sizing: border-box;
+			}
+			#promo .phrase{ font-size: 36px }
+			#promo .subscribe{
+							padding: 6px 18px;
+							background: hsl(248, 100%, 8%);
+							border-radius: 6px;
+							font-size: 28px;
+							text-transform: capitalize;
+							cursor: pointer;
+							margin-top: 10px;
+							display: inline-block;
+							}
+							.subscribe:hover{ background: #57dc00 !important; color: hsl(234, 100%, 8%); }
+			#promo .any{
+						font-size: 16px;
+						font-weight: 100;
+						margin-top: 10px;
+						min-height: 30px;
+						cursor: default;
+						}
+
+
+		#rooms{/*
+				position: absolute;
+				left: 48px;
+				right: 48px;*/
+				box-sizing: border-box;
+				height: 200px;
+				margin: 30px 48px 48px 48px;
+				top: 600px;
+				overflow-y: hidden;
+				overflow-x: auto;
+				}
+				#rooms::-webkit-scrollbar{ height: 10px; }
+				#rooms::-webkit-scrollbar-track { border-radius: 0px }
+				#rooms::-webkit-scrollbar-thumb{ background-color: #00000066; border-radius: 0px; }
+
+				#rooms_wrap{/*
+							position: absolute;
+							height: 100%;
+							width: max-content;
+							*/
+							}
+				.room{
+					width: 200px;
+					margin: 0 30px;
+					float: left;
+					}
+					.room_title_text{
+								color: #fff;
+								font-size: 13px;
+								letter-spacing: .5px;
+								overflow: hidden;
+								height: 16px;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+								cursor: default;
+								}
+					.room_title span{
+									font-size: 12px;
+									font-weight: bold;
+									color: hsl(234, 100%, 8%);
+									cursor: default;
+									}
+
+					.room_live_type{
+									position: relative;
+									width: 30px;
+									margin: -125px 0 0 198px;
+									padding: 1px 6px;
+									background: #57dc00;
+									text-transform: uppercase;
+									font-size: 12px;
+									text-align: center;
+									font-weight: bold;
+									z-index: 2;
+									cursor: pointer;
+									letter-spacing: .5px;
+									}
+									.room_live_type_false{ visibility: hidden; }
+
+					.room:first-child{ margin-left: 0 }
+					.room_img_preview{
+									width: 240px;
+									border-radius: 7px;
+									}
+					.room_thumb{
+								position: relative;
+								width: 240px;
+								height: 135px;
+								margin-top: -139px;
+								border-radius: 6px;
+								z-index: 1;
+								cursor: pointer;
+								background-size: cover !important;
+								}
+								.room_thumb:hover{ opacity: 0 }
+								.room_thumb:after{
+												content: '';
+												position: absolute;
+												width: 240px;
+												height: 135px;
+												border-radius: 6px;
+												background: hsla(0,0%,0%,.1);
+												}
+					.room_title{
+								position: relative;
+								margin-top: 116px;
+								}
+
+
+		#stories{
+				margin: 0px 0 30px 0;
+				height: 234px;
+				background: url(media/demoday.png);
+				background-repeat: repeat-x;
+				background-position: bottom;
+				background-size: 1337px;
+				color: #ffffff;
+				font-size: 48px;
+				text-align: center;
+				font-weight: bold;
+				text-transform: lowercase;
+				box-shadow: 0 10000px 0 10000px hsl(0deg 0% 100%);
+				cursor: default;
+				}
+				#stories:before{
+								content: '';
+								background: hsl(0deg 0% 100%);
+								position: absolute;
+								width: 100%;
+								height: 300px;
+								left: 0;
+								z-index: -1;
+								margin-top: 150px;
+								}
+				#stories img{
+							display: inline-block;
+							height: 36px;
+							margin-right: 10px;
+							}
+				.stories{
+						max-width: 90%;
+						padding: 0 18px 15px 18px;
+						margin: 0 auto;
+						text-align: justify;
+						text-transform: capitalize;
+						font-size: 12px;
+						line-height: 20px;
+						column-count: 2;
+						column-gap: 40px;
+						column-rule-style: solid;
+						column-rule-width: 1px;
+						column-rule-color: hsl(0, 0%, 60%);
+						color: #333;
+						cursor: default;
+						}
+						.stories span{
+									color: #fff;
+									cursor: pointer;
+									letter-spacing: .5px;
+									padding: 2px 6px;
+									background: hsl(248, 100%, 8%);
+									}
+									.stories span:hover{
+														color: #57dc00;
+														}
+
+		/*
+		#pricing{
+				margin: 30px auto;
+				height: 60px;
+				width: 100%;
+				background: url(media/dollard.png);
+				background-repeat: no-repeat;
+				background-position: top center;
+				background-size: 156mm;
+				padding-top: 248px;
+				text-align: center;
+				font-size: 60px;
+				font-weight: bold;
+				color: #001312;
+				letter-spacing: -2px;
+				transform: rotate(-5deg);
+				}
+				#pricing b{ color: #aeb597; }
+				*/
+
+
+		#planes{
+				padding-top: 20px;
+				text-align: center;
+				}
+				.plan{
+					width: 25%;
+					min-width: 310px;
+					max-width: 400px;
+					margin: 0 10px 20px 10px;
+					display: inline-table;
+					padding: 30px 20px;
+					font-size: 13px;
+					letter-spacing: 0.5px;
+					box-sizing: border-box;
+					border-radius: 6px;
+					}
+
+					#plan_prime{
+								color: #ffffff99;
+								overflow: hidden;
+								background: url(media/dollarh.png) #00000066;
+								background-size: 1 66.2mm;
+								background-size: 155.9mm;
+								background-repeat: no-repeat;
+								background-position: bottom center;
+								padding-bottom: 255px;
+								border-bottom: 55px solid #00000055;
+								}/*
+								#plan_prime_dollar{
+												margin: 24px auto 10px auto;
+												width: 254px;
+												height: 596px;
+												background: url(media/dollarhs.png);
+												background-repeat: no-repeat;
+												background-position: center;
+												background-size: 66.6mm;
+												}*/
+
+								.plan u{ text-decoration: none !important; }
+
+								#plan_prime u,
+								#plan_professional u{ color: #fff; }
+								#plan_premium u{ font-weight: bold; }
+
+
+					#plan_professional{
+										background: #000029;
+										color: #ffffff99;
+										}
+
+					#plan_premium{
+								background: #fff;
+								color: #000;
+								box-shadow: 0 2px 6px 0 #000;
+								}
+
+					.plan img{
+							width: 32px;
+							}
+					.plan b{
+							display: block;
+							color: #fff;
+							font-size: 30px;
+							line-height: 36px;
+							font-family: 'Comfortaa', cursive;
+							text-transform: capitalize;
+							cursor: default;
+							}
+							#plan_premium.plan b{ color: #000 }
+
+					.plan span{ cursor: default; }
+
+					.plan_buy{
+							background: hsl(248, 10%, 70%);
+							color: black;
+							padding: 10px;
+							max-width: 100px;
+							margin: 10px auto 10px auto;
+							border-radius: 4px;
+							font-weight: bold;
+							letter-spacing: -.1px;
+							font-size: 17px;
+							cursor: pointer;
+							}
+							.plan_buy:hover{ background: #57dc00 }
+
+					.plan ul,
+					.plan ol{
+							text-align: left;
+							width: 248px;
+							margin: 20px auto 10px auto;
+							}
+							.plan li{ margin-bottom: 10px; cursor: default !important; }
+
+
+		#oferta{
+			max-width: 90%;
+			padding: 20px 18px 15px 18px;
+			margin: 0 auto 30px auto;
+			text-align: justify;
+			text-transform: capitalize;
+			font-size: 13px;
+			line-height: 20px;
+			column-count: 5;
+			column-gap: 40px;
+			}
+			#oferta b{
+					display: inline-block;
+					text-align: left;
+					font-size: 16px;
+					margin-left: -24px;
+					padding: 8px 0 4px 24px;
+					background: url(platzi_logo.png);
+					background-size: 18px;
+					background-repeat: no-repeat;
+					background-position: 0 6px;
+					box-sizing: border-box;
+					color: #000429;
+					cursor: default;
+					text-transform: initial;
+					}
+			#oferta ul{ margin: 0 0 20px 0; color: #333; }
+			#oferta ul b{ margin-bottom: 10px; display: inline-block; }
+			#oferta ul:hover b{ background: #57dc00; color: #000; }
+		/*	#oferta ul:hover li{ list-style-type: disc;} */
+			#oferta li{
+						padding: 4px 6px;
+						margin-left: -6px;
+						font-size: 11px;
+						line-height: 14px;
+						list-style-type: none;
+						cursor: pointer;
+						box-sizing: border-box;
+						text-align: left;
+						}
+						#oferta li.live:before{
+											content: 'LIVE';
+											position: absolute;
+											margin-left: -38px;
+											width: 33px;
+											background: #57dc00;
+											text-align: center;
+											font-size: 10px;
+											font-weight: bold;
+											letter-spacing: .5px;
+											margin-top: 0px;
+											line-height: 12px;
+											padding: 1px 0;
+											}
+						#oferta li span{ font-size: 11px; color: #00000066; display: none; }
+						#oferta li:hover{ background: hsl(248, 10%, 90%); /*background: #57dc00; color: #000;*/ }
+					/*	#oferta li.live:hover{ background: hsl(248, 10%, 90%); }
+					/*	#oferta li.live:hover:before{
+													margin-top: 0;
+													padding: 4px 0;
+													}*/
+
+						#oferta ul.compress{ display: inline-block !important; }
+						#oferta ul.compress li{
+											float: left;
+											text-transform: initial;
+											margin-right: 6px;
+											padding: 3px 4px;
+											}
+
+						#oferta u{
+								font-size: 10px;
+								text-decoration: none;
+								text-transform: initial;
+								cursor: pointer;
+								word-break: break-word;
+								display: block;
+								font-weight: bold;
+								color: hsl(234, 100%, 24%);
+								}
+
+
+
+
+			.partners{
+					display: table;
+					text-align: center;
+					margin: 40px auto 10px auto;
+					}
+					.partners img{
+								margin: 0 20px;
+								float: left;
+								opacity: .5;
+								}
+								#partners_ycombinator{ width: 234px; }
+								.partners_text{
+											text-align: center;
+											margin-bottom: 40px;
+											font-size: 12px;
+											color: hsl(234, 100%, 8%);
+											font-weight: bold;
+											cursor: default;
+											}
+
+			footer{ padding-top: 20px; }
+			footer.partners_text{
+								margin-top: 60px;
+								}
+								footer h4{ margin-bottom: 10px; }
+								footer .parragraphe{ margin: 10px auto; max-width: 600px; }
+								footer span:hover{ color: #57dc00; cursor: pointer; }
+								footer img{
+											margin-top: 60px;
+											width: 100px;
+											}
+
+
+@media( max-width: 600px ){
+
+						#bar_wrap{
+								position: absolute;
+								height: 100%;
+								left: 18px;
+								right: 18px;
+								}
+						}
+
+#borrador div{
+			position: absolute;
+			width: 300px;
+			left: 50%;
+			margin-left: -150px;
+			bottom: 40px;
+			color: #fff;
+			font-size: 12px;
+			}
+
+@media( min-width: 1200px ){
+							#borrador{
+									display: none;
+									}
+							}
+
+
+
+	</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+	<!--
+	-->
+	
+	<div id="borrador">
+						<div>
+							! éste borrador sólo es apto para resoluciones entre 1200px y 1920px.
+							<br><br>
+							de ninguna manera es un ejemplo de código ni de diseño estructural, solo es un borrador conceptual.
+							<br><br>
+							la idea es sentir la experiencia comunitaria desde el primer momento en el sitio, @hallnewman.</div>
+						</div>
+	
+	<div id="splash"></div>
+	<div id="splashw"></div>
+
+	<div id="bar">
+				<div id="bar_wrap">
+								<div id="bar_logo"></div>
+								<div id="bar_wrap_input">
+														<input type="text" name="bar_input" id="bar_input" placeholder="Platzi" spellcheck="false">
+														</div>
+								<div id="bar_login">login</div>
+								</div>
+				</div>
+
+	<div id="menu">
+				<span><a href="#oferta">Clases</a></span>
+				<span><a href="#planes">Precios</a></span>
+				<span>Conferencias</span>
+				<!----
+				<span>blog</span>
+				<span>historias</span>
+				<span>foro</span>
+				<span>agenda</span>
+				<span>podcasts</span>
+				!---->
+				<span class="float_right">español</span>
+				<span class="float_right">?</span>
+				<span class="float_right"><a href="#footer">teléfonos</a></span>
+				</div>
+
+
+	<div id="lives">
+					<div class="lives_window on_left">
+													<div class="on_label live_off">students</div>
+													<div id="lives_students" class="live_laterals"></div>
+													</div>
+					<div id="on_live_one_information">students on this room, now.</div>
+
+
+
+
+					<div id="on_live_on" class="lives_window on_live">
+													<div id="on_live_on_label" class="on_label live_on">LIVE</div>
+													<div id="on_live_on_rotule"></div>
+													<div id="on_live_wrapper">
+																			<!--
+																			<iframe id="iframe_live" src="https://www.youtube-nocookie.com/embed/nA9UZF-SZoQ?rel=0&modestbranding=0&autohide=1&mute=1&showinfo=0&controls=1&autoplay=1"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" width="530" height="300"  frameborder="0"></iframe>
+																			-->
+																			</div>
+													</div>
+
+
+
+
+					<div id="on_live_information">
+												<div id="on_live_information_avatar"></div>
+												<div id="on_live_information_description">
+																					<b>Space Station Accoplation Workshop</b>
+																					<br>
+																					Direct from America's space program to YouTube, watch NASA TV live streaming here to get the latest from our exploration of the universe and learn how we discover our home planet.
+																					<br>
+																					@nasa
+																					</div>
+												</div>
+
+
+
+
+					<div class="lives_window on_chat">
+													<div class="on_label live_off">chat</div>
+													<div id="on_chat_wrapper" class="live_laterals"></div>
+													</div>
+					<div id="on_live_two_information">chatting on this room, now.</div>
+
+					</div>
+
+
+	<div id="promo">
+					<span class="phrase">Unlimited Courses, Supports & more.</span>
+					<span class="subscribe">subscribe</span>
+					<div class="any" id="sublema">study anywhere, learn anywish.</div>
+					</div>
+
+
+	<div id="rooms"></div>
+
+
+<!--
+	<div id="stories"><img src="platzi_logo.png">STORIES</div>
+
+	<div class="stories">
+	<span title="readme">the urban roosters</span> lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, <span title="readme">chefly</span> but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently <span title="readme">fotolitic</span> with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<br>
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. <span title="readme">smart quick</span> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but <span title="readme">demo day</span> also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<br>
+	Lorem Ipsum <span title="readme">on million dollars</span> has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled <span title="readme">latam</span> it to make a type specimen book.
+	</div>
+-->
+
+
+
+
+
+<!--div id="pricing">- one dollar <b>X</b> day</div-->
+
+<div id="planes">
+				<div class="plan" id="plan_prime">
+												<img src="platzi_logo.png">
+												<b>prime</b>
+												<span>
+												Elige cuántos días quieres estudiar, <br>
+												compra mínima de 30 días,<br>
+												un pago total.
+												</span>
+												<br>
+												<br>
+												<b>$1 USD *day</b>
+												<div class="plan_buy" title="and be happy.">Subscribe</div>
+												<ol>
+												<li>Acceso virtual a más de <u>un millón</u> de horas de clase profesional, distribuidas en más de 10 mil cursos.</li>
+												<li>Todo el contenido disponible en iOS y Android.</li>
+												<li>Certificación Digital por los estudios aprovados.</li>
+												</ol>
+												<!--div id="plan_prime_dollar"></div-->
+												</div>
+				
+				<div class="plan" id="plan_professional">
+												<img src="platzi_logo.png">
+												<b>professional</b>
+												<span>
+												Ideal para crecer tu carrera en bloques,<br>
+												compra mínima de 6 meses,<br>
+												un pago mes a mes.
+												</span>
+												<br>
+												<br>
+												<b>$24 USD *month</b>
+												<div class="plan_buy" title="and be cool!">Subscribe</div>
+												<ol start="4">
+												<!--li>Aparte del acceso virutal, podrás participar de actividades presenciales con un 50% de descuento en todas.</li>
+												<li>Platzi Demo Day, estará disponoble para ti! junto con asesoría personalizada en tu desarrollo.</li-->
+												<li>Platzi Prime más Entrada exclusiva a la Escuela de Inglés.</li>
+												<li>Descarga clases con la App y estudia sin conexión.</li>
+												<li>Diploma de certificación físico de los estudios aprobados.</li>
+												<li>Taller de Creación de Startups.</li>
+												<li>Mentorías semanales en grupo y en vivo.</li>
+												<li>Acceso VIP a PlatziConf, online y presencial.</li>
+												<li>Participa en Platzi <u>Demo Day</u> con tu Startup.</li>
+												<li>Ingreso a los nuevos cursos 48 horas antes de su lanzamiento.</li>
+												<li>Clases en Full HD para toda conexión.</li>
+												<li>El precio del plan nunca subirá mientras mantengas tu suscripción activa.</li>
+												</ol>
+												</div>
+				
+				<div class="plan" id="plan_premium">
+												<img src="platzi_logo.png">
+												<b>premium</b>
+												Accede a todos los recursos educativos Platzi,<br>
+												y puedes traer contido a un partner,<br>
+												compra mínima de 1 año.
+												<br>
+												<br>
+												<b>$421 USD *year</b>
+												<div class="plan_buy" title="and be a super hero!">Subscribe</div>
+												<ol start="14">
+												<li>Platzi Professional <u>2X1</u> con super poderes, porque tendrás el privilegio de traer un partner para compartir tu subscriptión.</li>
+												<li>Dispones de acceso exclusivo de la escuela de negocios.</li>
+												<li>Ser parte de nuestros ignites durante la PlatziConf.</li>
+												<li>Derecho a visitar nuestras oficinas y hacer uso de nuestro Coworking.</li>
+												<li>Asesoría personalizada con uno de nuestros team leaders, una vez cada 3 meses.</li>
+												<li>Playera, gorra y bolso de Platzi, para ti y tu partner, vivas dónde vivas!</li>
+												<li>Candidatura para ser parte de nuestra red de privada de Platzi Masters.</li>
+												</ol>
+												</div>
+				</div>
+
+
+
+
+
+	<div id="stories"><img src="platzi_logo.png">STORIES</div>
+
+	<div class="stories">
+	<span title="readme">the urban roosters</span> lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, <span title="readme">chefly</span> but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently <span title="readme">fotolitic</span> with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<br>
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. <span title="readme">smart quick</span> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but <span title="readme">demo day</span> also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	<br>
+	Lorem Ipsum <span title="readme">on million dollars</span> has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled <span title="readme">latam</span> it to make a type specimen book.
+	</div>
+
+
+
+
+<div class="partners">
+					<img src="ibm.png">
+					<img src="unity.png">
+					<img src="asugsv.png">
+					<img src="y.png" id="partners_ycombinator">
+					</div>
+					<div class="partners_text">
+										Platzi es Certificador Oficial de tecnologías IBM y unity, ha sido premiado por ASU+GSV SUBMIT y es apoyado por Y Combinator.
+										</div>
+
+
+
+
+
+
+<div id="oferta">
+
+				<b>Languajes</b>
+				<ul class="compress">
+					<li>html</li>
+					<li>css</li>
+					<li>Javascript</li>
+					<li>Swift - IOS</li>
+					<li>Kotlin - Android</li>
+					<li>Java</li>
+					<li>Lenguaje C</li>
+					<li>Python</li>
+					<li>C++</li>
+					<li>C#</li>
+					<li>PHP</li>
+					<li>Swift</li>
+					<li>SQL</li>
+					<li>Ruby</li>
+					<li>Objective C</li>
+					<li>R</li>
+					<li>Matalab</li>
+					<li>Elixir</li>
+					<li>Go</li>
+					</ul>
+
+				<b>Diseño y UX</b>
+				<u id="students_now_1" title="see who!">studens now.</u>
+				<ul>
+					<li>Diseño de Interfaces (UI)</li>
+					<li class="live">Diseño Gráfico</li>
+					<li>Diseño de Experiencia de Usuario (UX Design)</li>
+					<li>Escuela de Product Design</li>
+					</ul>
+				
+				<b>Marketing</b>
+				<u id="students_now_2" title="see who!">studens now.</u>
+				<ul>
+					<li>Email Marketing</li>
+					<li>Marketing y Ventas</li>
+					<li>Outbound Marketing</li>
+					<li>Inbound Marketing</li>
+					<li>Marketing Digital y Estrategia Online</li>
+					<li class="live">Marketing Basado en Datos</li>
+					<li>Escuela de Publicidad Digital</li>
+					<li>Escuela de Marketing Digital</li>
+					</ul>
+
+				<b>Negocios y Emprendimiento</b>
+				<u id="students_now_3" title="see who!">studens now.</u>
+				<ul>
+					<li>Escuela de Negocios</li>
+					<li>Transformación Digital</li>
+					<li>Comercio electrónico o E-commerce</li>
+					<li>Blockchain y Criptomonedas</li>
+					<li>Creación De Startups</li>
+					<li>Gestión de Proyectos</li>
+					</ul>
+
+				<b>Producción Audiovisual</b>
+				<u id="students_now_4" title="see who!">studens now.</u>
+				<ul>
+					<li>Escuela de Producción Audiovisual</li>
+					<li>Periodismo Digital</li>
+					</ul>
+
+				<b>Desarrollo e ingeniería</b>
+				<u id="students_now_5" title="see who!">studens now.</u>
+				<ul>
+					<li>Escuela de Videojuegos</li>
+					<li>Administración de Servidores y DevOps</li>
+					<li class="live">Amazon Web Services</li>
+					<li>iOS Mobile Developer</li>
+					<li>Desarrollo de Apps Multiplataforma con Xamarin</li>
+					<li>Desarrollo Web Backend con PHP</li>
+					<li>Desarrollo Web Frontend con Vue.js</li>
+					<li>Arquitectura Frontend</li>
+					<li>Escuela de Data Science</li>
+					<li>Frontend con Angular</li>
+					<li>Escuela de JavaScript</li>
+					<li>Seguridad Informática</li>
+					<li>Bases de Datos desde Cero</li>
+					<li>Desarrollo de Apps con React Native</li>
+					<li>Matemáticas para Programación</li>
+					<li>Firebase</li>
+					<li>Desarrollo de Aplicaciones Android</li>
+					<li>Desarrollo con IBM Cloud</li>
+					<li>Ciencias</li>
+					<li>Google Cloud Platform</li>
+					<li>Internet of Things</li>
+					<li>Desarrollo Backend con Python y Django</li>
+					<li>Desarrollo Backend con Go</li>
+					<li>Cloud Computing en Azure</li>
+					<li>Desarrollo de Aplicaciones con ASP .NET</li>
+					<li>Desarrollo con WordPress</li>
+					<li>Fundamentos de programación</li>
+					<li>Inteligencia Artificial y Machine Learning</li>
+					<li>Desarrollo Web Backend con Ruby on Rails</li>
+					<li>Desarrollo de Videojuegos con Unity</li>
+					<li class="live">Desarrollo Backend con JavaScript</li>
+					<li>Desarrollo de Apps multiplataforma</li>
+					<li>Escuela de Desarrollo Web</li>
+					<li>Desarrollo Backend con Java</li>
+					<li>Frontend con React.js</li>
+					</ul>
+
+				<b>Crecimiento Profesional</b>
+				<u id="students_now_6" title="see who!">studens now.</u>
+				<ul>
+					<li>Escuela de Inglés</li>
+					<li>Escuela de Desarrollo Profesional</li>
+					</ul>
+
+				</div>
+
+
+
+
+
+
+
+<footer id="footer" class="partners_text">
+
+					<div class="parragraphe">
+					<h4>TEAM</h4>
+					<span title="@freddier">JHON FREDDY VEGA</span> ●
+					<span title="@cvander">CHRISTIAN VAN DER HENST</span> ●
+					<span title="@tifis">DIANA REYES</span> ●
+					<span title="@julano">JULANO SUTANO</span> ●
+					<span title="@jhon">JHONE DOE</span> ●
+					<span title="@peren">PERENSEJO SUTANEJO</span> ●
+					<span title="@jane">JANE DOW</span> ●
+					<span title="@tomas">TÓMAS EDINSON</span> ●
+					<span title="@freddier">JHON FREDDY VEGA</span> ●
+					<span title="@cvander">CHRISTIAN VAN DER HENST</span> ●
+					<span title="@tifis">DIANA REYES</span> ●
+					<span title="@julano">JULANO SUTANO</span> ●
+					<span title="@jhon">JHONE DOE</span> ●
+					<span title="@peren">PERENSEJO SUTANEJO</span> ●
+					<span title="@jane">JANE DOW</span> ●
+					<span title="@tomas">TÓMAS EDINSON</span> ●
+					<span title="@freddier">JHON FREDDY VEGA</span> ●
+					<span title="@cvander">CHRISTIAN VAN DER HENST</span> ●
+					<span title="@tifis">DIANA REYES</span> ●
+					<span title="@julano">JULANO SUTANO</span> ●
+					<span title="@jhon">JHONE DOE</span> ●
+					<span title="@peren">PERENSEJO SUTANEJO</span> ●
+					<span title="@jane">JANE DOW</span> ●
+					<span title="@tomas">TÓMAS EDINSON</span> ●
+					</div>
+					<br>
+					<div class="parragraphe">
+					<h4>SPECIAL THANKS</h4>
+					<span title="open">IBM</span> ●
+					<span title="open">ASU+GSV SUBMIT</span> ●
+					<span title="open">Y COMBINATOR</span> ●
+					<span title="open">FACEBOOK INC.</span> ●
+					<span title="open">GOOGLE LLC.</span> ●
+					<span title="open">MICROSOFT CORPORATION</span> ●
+					<span title="open">MINISTERIO DE EDUCACIÓN DE COLOMBIA</span> ●
+					<span title="open">BBVA BANCOMER</span> ●
+					<span title="open">AUDIOTORIO FRIDA CALO</span> ●
+					<span title="escríbele a Doña Fabiola">DOÑA FABIOLA EN SERVICIOS GENERALES</span>
+					</div>
+					<br>
+					<div class="parragraphe">
+					<h4>&nbsp;</h4>
+					Santa Fe de Bogotá - CO, calle 7 # 99 - 6, tels: +57 (1)8475912 ● 
+					Ciudad de México - MX, transversal 897 # 74c - 88, tels: +52 (3) 9874587 ● 
+					San Francisco - US, Road Street 25 # 6 - 9 : tels +1 (2) 9788745832
+					<br>
+					<span title="Platzi on Twitter">twitter</span> ●
+					<span title="Platzi on Facebook">facebook</span> ●
+					<span title="Platzi on Instagram">instagram</span> ●
+					<span title="Platzi on Youtube">youtube</span> ●
+					<span title="Platzi on Spotify">spotify</span>
+					</div>
+
+					<b>&reg;</b> 2020 Platzi.
+					<br>
+					<img src="platzi_logo.png">
+					</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+function fade(c,d,e,f){var g=new Date,b={duration:e,callback:f||function(){},alpha:function(a){a=this.progress;return.5-Math.cos(a*Math.PI)/2},step:function(a){d.style.opacity="in"==c?0+a:1-a}},h=setInterval(function(){var a=(new Date-g)/b.duration;1<a&&(a=1);b.progress=a;b.step(b.alpha(a));1==a&&(clearInterval(h),b.callback())},b.delay||10)};
+
+setTimeout(function(){
+					fade('out', document.getElementById('splashw'), 300, function(){
+																				document.getElementById('splashw').style.display = 'none';
+
+																				fade('out', document.getElementById('splash'), 1200, function(){
+																																				document.getElementById('splash').style.display = 'none';
+																																				})
+																				})
+					}, 1000)
+
+
+
+
+
+
+
+function get_random(min, max){
+							return parseInt( Math.random() * (max - min) + min )
+							};
+
+
+var airport_text = function(c,b,d,e){var a=k=0,f=b.length;z=function(){c.innerHTML=b[a].substring(0,k);0==k--?(k=0,setTimeout("q()",90),a=a+1==f?0:a+1):setTimeout("z()",get_random(20,30))};q=function(){c.innerHTML=b[a].substring(0,k);str_len=b[a].length;k++==str_len?(k=b[a].length,setTimeout("z()",get_random(d,e))):setTimeout("q()",get_random(60,90))};q()};
+
+	airport_text( document.getElementById('sublema'), ["study anywhere, learn anywish.", "never stop learning."], 3000, 30000 )
+
+var students_on_live_room,
+	last_user_chatting,
+	timeout_chatting;
+
+function get_random_students(){
+							return parseInt( get_random( 30, 70 ) )
+							};
+
+function get_random_chat(){
+							return parseInt( get_random( 10, 30 ) )
+							};
+
+function shuffle_array( array ){
+							return array.sort(() => Math.random() - 0.5);
+							}
+
+
+
+function set_room_to_live( id, sound ){
+									var sound 	= sound===true? 1 : 0,
+										link 	= 'https://www.youtube-nocookie.com/embed/'+rooms_json[id].link+'?rel=0&modestbranding=0&autohide=1&mute='+sound+'&showinfo=0&controls=1&autoplay=1"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
+										iframe 	= '<iframe id="iframe_live" src="'+link+'allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" width="530" height="300"  frameborder="0"></iframe>';
+
+									document.getElementById('on_live_wrapper').innerHTML = iframe;
+									document.getElementById('on_live_information_avatar').style.background = 'url('+rooms_json[id].avatar+')';
+
+									document.getElementById('on_live_on_label').style.display = rooms_json[id].live? 'block' : 'none';
+
+									document.getElementById('on_live_information_description').innerHTML = '<b>'+rooms_json[id].title+'</b><br>'+rooms_json[id].description+'<br>@'+rooms_json[id].username
+									
+									document.getElementById('on_live_one_information').innerHTML =  rooms_json[id].students+' students on this room, now.';
+									document.getElementById('on_live_two_information').innerHTML =  rooms_json[id].chatting+' chatting on this room, now.';
+
+
+									document.getElementById('lives_students').innerHTML = '';
+
+
+									var pseudo_students 		= Array.from(Array(rooms_json[id].students), (_,x) => x);
+										pseudo_students 		= shuffle_array( pseudo_students );
+										students_on_live_room 	= pseudo_students;
+
+									var	p = 0;
+
+
+										for( p in pseudo_students ){
+																	document.getElementById('lives_students').innerHTML =  document.getElementById('lives_students').innerHTML + '<div class="img_live_student" id="live_on_student_'+pseudo_students[p]+'" title="@student_'+pseudo_students[p]+'"></div>'
+																	}
+
+
+
+										p = 0;
+
+										for( p in pseudo_students ){
+																	document.getElementById('live_on_student_'+pseudo_students[p]).style.background = 'url( https://i.pravatar.cc/66?img='+pseudo_students[p]+') hsl(0,0%,'+get_random(50,80)+'%)'; //  setAttribute('src','https://i.pravatar.cc/66?img='+pseudo_students[p])
+																	}
+
+								//	document.getElementById('lives_students').scrollTop = 50;
+
+									document.getElementById('on_chat_wrapper').innerHTML = '';
+
+									clearTimeout( timeout_chatting );
+
+									chatting();
+
+									window.scroll(0, 0)
+
+									};
+
+
+
+var phrases = [
+			"text ever since the 1500s",
+			"but also the leap into electronic",
+			"electronic typesetting, remaining essentially unchanged",
+			"text of the printing and typesetting industry",
+			"scrambled it to make a type specimen book",
+			"lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
+			"survived not only five centuries, but also the leap into electronic",
+			"make a type specimen book. It has survived not only five centuries",
+			"Lorem Ipsum is simply dummy text of the printing and typesetting industry, and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+			"typesetting, remaining essentially unchanged"
+			];
+
+
+var rooms_array,
+	rooms_html 	= '',
+	rooms_json 	= {
+					d : {
+						id 				: "d",
+						thumb 			: "thumb_hqdefaulte.png",
+						avatar 			: "https://pbs.twimg.com/profile_images/717550737690066944/qdNdggUu_400x400.jpg",
+						preview			: "hqdefaulte.webp",
+						title 			: "¿Vale la pena trabajar con influencers?",
+						live 			: true,
+						description 	: "Entrevistamos a Camila Pardo, Gerente de Business Intelligence & Audience Development de Sony Music para PlatziLIVE. Camila lleva más de 5 años trabajando con personalidades de alto impacto y opinión en redes sociales.",
+						link 			: "JCqzpaQ_2IM",
+						username 		: "icamilapardo",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					b : {
+						id 				: "b",
+						thumb 			: "thumb_hqdefaultb.png",
+						avatar 			: "https://pbs.twimg.com/media/DTSfh45X0AADaRx.jpg",
+						preview			: "hqdefaultb.webp",
+						title 			: "Cvander NEWS",
+						live 			: false,
+						description 	: "Microsoft compra GITHUB; novedades en el WWDC2018; Twitter al alza | CvanderNews",
+						link 			: "U1GOrhZVidc",
+						username 		: "cvander",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					c : {
+						id 				: "c",
+						thumb 			: "thumb_hqdefaulta.png",
+						avatar 			: "https://lanotaeconomica.com.co/wp-content/uploads/2019/11/Platzi.jpg",
+						preview			: "hqdefaulta.webp",
+						title 			: "Portafolio para diseñadores",
+						live 			: true,
+						description 	: "Cómo crear un portafolio de UI para diseñadores",
+						link 			: "X-bPSOCFM5U",
+						username 		: "freddier",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					a : {
+						id 				: "a",
+						thumb 			: "thumb_hqdefaultc.png",
+						avatar 			: "https://pbs.twimg.com/profile_images/1230687262658174981/Tj0hrgtk.jpg",
+						preview			: "hqdefaultc.webp",
+						title 			: "Backlinks",
+						live 			: true,
+						description 	: "Qué son los Backlinks en una estrategia de SEO",
+						link 			: '9Fdr8Xb1Dmo',
+						username 		: "IngridMarketing",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					e : {
+						id 				: "e",
+						thumb 			: "thumb_hqdefaultf.png",
+						avatar 			: "https://elsolweb.tv/wp-content/uploads/2018/09/PlatziFINAL.jpg",
+						preview			: "hqdefaultf.webp",
+						title 			: "Platzi Teacher's Room LIVE Cam, México D.C.",
+						live 			: true,
+						description 	: "Vive en LIVE Cam nuestras oficinas y aprende desde cero a crear el futuro web con nuestros Cursos Online Profesionales de Tecnología.",
+						link 			: "1FrZHX7mjhU",
+						username 		: "Platzi",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					f : {
+						id 				: "f",
+						thumb 			: "thumb_hqdefaultd.png",
+						avatar 			: "https://static.platzi.com/media/avatars/avatars/benjibel_cb45cd40-d2c7-4bd8-a42c-ff6e57a450ab.jpg",
+						preview			: "hqdefaultd.webp",
+						title 			: "Cómo presentarte exitosamente vía email",
+						live 			: false,
+						description 	: "Como parte del Curso de Marca Personal, Belén Ceballos del Equipo Platzi te cuenta cómo destacar y llamar la atención de alguien que no conoces a través de un email. Más allá de los objetivos que tengas, usar esta herramienta a tu favor tendrá un gran impacto en tu futuro profesional.",
+						link 			: "NYvM9U5kKgs",
+						username 		: "benjibel",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					g : {
+						id 				: "g",
+						thumb 			: "thumb_hqdefaultg.png",
+						avatar 			: "https://yt3.ggpht.com/a/AATXAJyjhPLjpkZ54OWzkeD3n6AwZNZE-AigHF_d7PU_kb0=s48-c-k-c0xffffffff-no-rj-mo",
+						preview			: "hqdefaultg.webp",
+						title 			: 'Space Station Accoplation Workshop',
+						live 			: true,
+						description 	: "Direct from America's space program to YouTube, watch NASA TV live streaming here to get the latest from our exploration of the universe and learn how we discover our home planet.",
+						link 			: "nA9UZF-SZoQ",
+						username 		: "nasa",
+						students 		: get_random_students(),
+						chatting 		: get_random_chat(),
+						},
+					};
+/*
+ny 			mRe-514tGMg
+space 		DDU-rZs-Ic4
+nasa 		21X5lGlDOfg
+nasa 2 		nA9UZF-SZoQ
+platzi 		9Fdr8Xb1Dmo
+*/
+
+
+	rooms_array = Object.keys( rooms_json );
+
+	for( a in rooms_array ) rooms_array[a] = rooms_json[ rooms_json[rooms_array[a]].id ];
+
+	for( r in rooms_array ) rooms_html = rooms_html + 
+									'<div class="room" title="'+rooms_array[r].description+'" onclick="set_room_to_live(\''+rooms_array[r].id+'\')">'+
+										'<img src="media/'+rooms_array[r].preview+'" class="room_img_preview">'+
+										'<div class="room_thumb" style="background:url(media/'+rooms_array[r].thumb+')"></div>'+
+										'<div class="room_live_type room_live_type_'+rooms_array[r].live+'"">live</div>'+
+										'<div class="room_title"><div class="room_title_text">'+rooms_array[r].title+'</div><span>'+rooms_array[r].students+' studens now.</span></div>'+
+										'</div>';
+
+
+	document.getElementById('rooms').innerHTML = '<div id="rooms_wrap" style="width:'+((rooms_array.length*260)-30)+'px">'+rooms_html+'</div>';
+
+
+
+	function chatting(){
+
+						var id 		= students_on_live_room[ get_random(0,students_on_live_room.length)],
+							avatar 	= document.getElementById('live_on_student_'+id);
+
+							avatar.className = 'img_live_student writting';
+
+							setTimeout( function(){
+													avatar.className = 'img_live_student';
+													// aquí decidimos si escibe o no en el chat
+
+													if( get_random(0,10) > 3 && 
+														last_user_chatting!=id ){
+																			document.getElementById('on_chat_wrapper').innerHTML = document.getElementById('on_chat_wrapper').innerHTML + '<div class="on_chat_message"><img src="https://i.pravatar.cc/66?img='+id+'"><div class="on_chat_message_text"><b>@student_'+id+'</b><br>'+phrases[get_random(0,9)]+'</div></div>';
+																			document.getElementById('on_chat_wrapper').scrollTop = document.getElementById('on_chat_wrapper').scrollHeight;
+																			last_user_chatting = id;
+																			};
+
+
+													document.getElementById('on_live_two_information').innerHTML =  get_random( 20, 30 )+' chatting on this room, now.';
+
+													}, get_random(300,10000) )
+
+						timeout_chatting = setTimeout( chatting, get_random(500,1000) )
+						};
+
+
+
+	window.addEventListener('load', function(){
+												set_room_to_live('e', true);
+												document.getElementById('rooms').scrollTo( (document.getElementById('rooms').scrollWidth - document.getElementById('rooms').offsetWidth)/2, 0)
+												})
+
+
+	document.getElementById('bar_input').addEventListener('focus', function(){
+																			if( document.getElementById('bar_input').value.length==0 ){
+																																	document.getElementById('bar_input').setAttribute('placeholder',' Qué aprenderás hoy?');
+																																	document.getElementById('bar_input').className = 'placehold';
+																																	}
+																			})
+
+	document.getElementById('bar_input').addEventListener('blur', function(){
+																			if( document.getElementById('bar_input').value.length==0 ){
+																																	document.getElementById('bar_input').setAttribute('placeholder','Platzi');
+																																	document.getElementById('bar_input').className = '';
+																																	}
+																			})
+
+
+
+	function students_now( number, range){
+										document.getElementById('students_now_'+number ).innerHTML = get_random( range, (range+5)) + ' students now.';
+										setTimeout( function(){ students_now( number, range ) }, get_random(200,2000))
+										}
+
+										students_now( 1, 421 );
+										students_now( 2, 4058 );
+										students_now( 3, 4825 );
+										students_now( 4, 924 );
+										students_now( 5, 12842 );
+										students_now( 6, 358 );
+
+
+	var body_color = 248;
+
+	setTimeout(function(){
+						setInterval(function(){ body_color = body_color > 360? 0 : body_color + 1;
+							document.getElementById('borrador').style.backgroundColor =
+							document.body.style.background = 'hsl('+body_color+',10%,24%)';
+							}, 500)
+						}, 1000)
+
+
+</script>
+
+</body>
+</html>
