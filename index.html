@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=1">
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 
 	<link rel="shortcut icon" href="platzi_favicon.png" />
 	<link rel="icon" sizes="192x192" href="platzi_favicon.png">
@@ -17,7 +18,7 @@ html {
 		*{
 			margin: 0;
 			padding: 0;
-			font-family: sans-serif;
+			font-family: arial, sans-serif;
 			-webkit-tap-highlight-color: rgba(0,0,0,0);
 			-webkit-tap-highlight-color: transparent;
      		scrollbar-color: #00000066 transparent;  // in firefox the scroll was transparent so I could not see it.
@@ -50,7 +51,7 @@ html {
 			min-width: 1200px !important;
 			}
 
-		#splashw,
+	/*	#splashw,*/
 		#splash,
 		#borrador{
 				position: fixed;
@@ -64,14 +65,14 @@ html {
 				background-position: center;
 				z-index: 1000;
 				min-height: 480px;
-				}
+				}/*
 				#splashw{
 						background: url(platzi_logo.png) #fff;
 						background-repeat: no-repeat;
 						background-size: 120px;
 						background-position: center;
 						z-index: 2000;
-						}
+						}*/
 
 		#bar{
 			position: absolute;
@@ -293,6 +294,7 @@ html {
 												font-size: 12px;
 												color: #ffffff99;
 												cursor: default;
+												letter-spacing: .5px !important;
 												}
 												#lives_students{
 																padding: 50px 0 60px 0;
@@ -337,7 +339,9 @@ html {
 												margin-left: 260px;
 												font-size: 12px;
 												text-align: right;
+												letter-spacing: .5px !important;
 												color: #ffffff99;
+												cursor: default;
 												}
 
 
@@ -349,6 +353,7 @@ html {
 											left: 50%;
 											margin-left: -300px;
 											font-size: 12px;
+											letter-spacing: .5px !important;
 											cursor: default;
 											}
 											#on_live_information_avatar{
@@ -401,6 +406,7 @@ html {
 						margin-top: 10px;
 						min-height: 30px;
 						cursor: default;
+						letter-spacing: .5px !important;
 						}
 
 
@@ -617,7 +623,7 @@ html {
 
 
 					#plan_professional{
-										background: #000029;
+										background: hsl(240, 80%, 8%);
 										color: #ffffff99;
 										}
 
@@ -697,7 +703,7 @@ html {
 			#oferta ul:hover b{ background: #57dc00; color: #000; }
 		/*	#oferta ul:hover li{ list-style-type: disc;} */
 			#oferta li{
-						padding: 4px 6px;
+						padding: 2px 6px;
 						margin-left: -6px;
 						font-size: 11px;
 						line-height: 14px;
@@ -705,6 +711,7 @@ html {
 						cursor: pointer;
 						box-sizing: border-box;
 						text-align: left;
+						text-transform: initial;
 						}
 						#oferta li.live:before{
 											content: 'LIVE';
@@ -744,8 +751,9 @@ html {
 								word-break: break-word;
 								display: block;
 								font-weight: bold;
-								color: hsl(234, 100%, 24%);
+								color: hsl(234, 100%, 20%);
 								}
+								#oferta u i{ color: hsl(234, 100%, 30%) !important; font-style: normal !important; }
 
 
 
@@ -776,7 +784,7 @@ html {
 								}
 								footer h4{ margin-bottom: 10px; }
 								footer .parragraphe{ margin: 10px auto; max-width: 600px; }
-								footer span:hover{ color: #57dc00; cursor: pointer; }
+								footer span:hover{ color: hsl(240deg 100% 30%); cursor: pointer; }
 								footer img{
 											margin-top: 60px;
 											width: 100px;
@@ -868,7 +876,7 @@ html {
 						</div>
 	
 	<div id="splash"></div>
-	<div id="splashw"></div>
+	<!--div id="splashw"></div-->
 
 	<div id="bar">
 				<div id="bar_wrap">
@@ -983,9 +991,9 @@ html {
 												<br>
 												<br>
 												<b>$1 USD *day</b>
-												<div class="plan_buy" title="and be happy.">Subscribe</div>
+												<div id="buy_1" class="plan_buy" title="and be happy.">Subscribe</div>
 												<ol>
-												<li>Acceso virtual a más de <u>un millón</u> de horas de clase profesional, distribuidas en más de 10 mil cursos.</li>
+												<li>Acceso virtual a más de <u>un millón</u> de horas de clases profesionales, distribuidas en más de 10 mil cursos.</li>
 												<li>Todo el contenido disponible en iOS y Android.</li>
 												<li>Certificación Digital por los estudios aprovados.</li>
 												</ol>
@@ -1003,7 +1011,7 @@ html {
 												<br>
 												<br>
 												<b>$24 USD *month</b>
-												<div class="plan_buy" title="and be cool!">Subscribe</div>
+												<div id="buy_2" class="plan_buy" title="and be cool!">Subscribe</div>
 												<ol start="4">
 												<!--li>Aparte del acceso virutal, podrás participar de actividades presenciales con un 50% de descuento en todas.</li>
 												<li>Platzi Demo Day, estará disponoble para ti! junto con asesoría personalizada en tu desarrollo.</li-->
@@ -1012,7 +1020,7 @@ html {
 												<li>Diploma de certificación físico de los estudios aprobados.</li>
 												<li>Taller de Creación de Startups.</li>
 												<li>Mentorías semanales en grupo y en vivo.</li>
-												<li>Acceso VIP a PlatziConf, online y presencial.</li>
+												<li>Acceso VIP a Platzi Conf, online y presencial.</li>
 												<li>Participa en Platzi <u>Demo Day</u> con tu Startup.</li>
 												<li>Ingreso a los nuevos cursos 48 horas antes de su lanzamiento.</li>
 												<li>Clases en Full HD para toda conexión.</li>
@@ -1029,11 +1037,11 @@ html {
 												<br>
 												<br>
 												<b>$421 USD *year</b>
-												<div class="plan_buy" title="and be a super hero!">Subscribe</div>
+												<div id="buy_3" class="plan_buy" title="and be a super hero!">Subscribe</div>
 												<ol start="14">
 												<li>Platzi Professional <u>2X1</u> con super poderes, porque tendrás el privilegio de traer un partner para compartir tu subscriptión.</li>
 												<li>Dispones de acceso exclusivo de la escuela de negocios.</li>
-												<li>Ser parte de nuestros ignites durante la PlatziConf.</li>
+												<li>Ser parte de nuestros ignites durante la Platzi Conf.</li>
 												<li>Derecho a visitar nuestras oficinas y hacer uso de nuestro Coworking.</li>
 												<li>Asesoría personalizada con uno de nuestros team leaders, una vez cada 3 meses.</li>
 												<li>Playera, gorra y bolso de Platzi, para ti y tu partner, vivas dónde vivas!</li>
@@ -1316,13 +1324,13 @@ html {
 function fade(c,d,e,f){var g=new Date,b={duration:e,callback:f||function(){},alpha:function(a){a=this.progress;return.5-Math.cos(a*Math.PI)/2},step:function(a){d.style.opacity="in"==c?0+a:1-a}},h=setInterval(function(){var a=(new Date-g)/b.duration;1<a&&(a=1);b.progress=a;b.step(b.alpha(a));1==a&&(clearInterval(h),b.callback())},b.delay||10)};
 
 setTimeout(function(){
-					fade('out', document.getElementById('splashw'), 300, function(){
-																				document.getElementById('splashw').style.display = 'none';
+				//	fade('out', document.getElementById('splashw'), 300, function(){
+																			//	document.getElementById('splashw').style.display = 'none';
 
-																				fade('out', document.getElementById('splash'), 1200, function(){
+																				fade('out', document.getElementById('splash'), 900, function(){
 																																				document.getElementById('splash').style.display = 'none';
 																																				})
-																				})
+																			//	})
 					}, 1000)
 
 
@@ -1596,7 +1604,7 @@ platzi 		9Fdr8Xb1Dmo
 
 
 	function students_now( number, range){
-										document.getElementById('students_now_'+number ).innerHTML = get_random( range, (range+5)) + ' students now.';
+										document.getElementById('students_now_'+number ).innerHTML = '<i>' + get_random( range, (range+5)) + '</i> students now.';
 										setTimeout( function(){ students_now( number, range ) }, get_random(200,2000))
 										}
 
@@ -1612,11 +1620,22 @@ platzi 		9Fdr8Xb1Dmo
 
 	setTimeout(function(){
 						setInterval(function(){ body_color = body_color > 360? 0 : body_color + 1;
+							document.getElementById('buy_1').style.backgroundColor =
+							document.getElementById('buy_2').style.backgroundColor =
+							document.getElementById('buy_3').style.backgroundColor = 'hsl('+body_color+',10%,70%)';
 							document.getElementById('borrador').style.backgroundColor =
 							document.body.style.background = 'hsl('+body_color+',10%,24%)';
 							}, 500)
 						}, 1000)
 
+
+	document.body.addEventListener("scroll",function(){
+														document.getElementById('bar').style.position = window.scrollY < 0? 'fixed' : 'absolute';
+														})
+
+/*
+minificar
+*/
 
 </script>
 
