@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Platzi</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=1">
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+	<link rel="shortcut icon" href="platzi_favicon.png" />
+	<link rel="icon" sizes="192x192" href="platzi_favicon.png">
+	<style type="text/css">
+
+html{
+	scroll-behavior: smooth;
+	}
+
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: arial, sans-serif;
+			cursor: default;
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+			-webkit-tap-highlight-color: transparent;
+     		scrollbar-color: #00000066 transparent;  // in firefox the scroll was transparent so I could not see it.
+			}
+
+			::-moz-selection { color: black;background: #fff;}
+			::selection { color: black; background: #fff; }
+
+			:-moz-placeholder{ color: #fff; opacity: 1 }
+			::-moz-placeholder{ color: #fff; opacity: 1 }
+			::placeholder{ color: #fff; opacity: 1 }
+			::-ms-input-placeholder{ color: #fff }
+			:-ms-input-placeholder{ color: #fff }
+
+			.placehold:-moz-placeholder{ color: #ffffff66 }
+			.placehold::-moz-placeholder{ color: #ffffff66 }
+			.placehold::placeholder{ color: #ffffff66 }
+			.placehold::-ms-input-placeholder{ color: #ffffff66 }
+			.placehold:-ms-input-placeholder{ color: #ffffff66 }
+
+
+			body::-webkit-scrollbar{ width: 12px; }
+			body::-webkit-scrollbar-track { border-radius: 0px }
+			body::-webkit-scrollbar-thumb{ background-color: #fff; border-radius: 0px; }
+
+		body{
+			background: hsl(248, 10%, 24%);
+			overflow-x: hidden;
+			padding-bottom: 100px;
+			min-width: 1200px !important;
+			}
+
+		#splash,
+		#borrador{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url(platzi_logo.png) hsl(248, 30%, 10%);
+				background-repeat: no-repeat;
+				background-size: 120px;
+				background-position: center;
+				z-index: 1000;
+				min-height: 480px;
+				opacity: 0;
+				display: none;
+				}
+
+		#bar{
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 72px;
+			background: hsl(248, 100%, 8%);
+			z-index: 100;
+			}
+
+			#bar_wrap{
+					position: absolute;
+					height: 100%;
+					left: 48px;
+					right: 48px;
+					}
+					#bar_logo{
+							width: 32px;
+							height: 100%;
+							background: url(platzi_logo.png);
+							background-size: 32px;
+							background-repeat: no-repeat;
+							background-position: center;
+							}
+					#bar_wrap_input{
+									position: absolute;
+									height: 100%;
+									top: 0;
+									left: 42px;
+									right: 50px;
+									background: url(glass.png), url(glass.png);
+									background-size: 28px;
+									background-repeat: no-repeat;
+									background-position: right;
+									}
+									#bar_input{
+												position: absolute;
+												height: 100%;
+												width: 100%;
+												padding-right: 38px;
+												box-sizing: border-box;
+												background: transparent;
+												outline: none;
+												cursor: text;
+												border: 0;
+												color: white;
+												font-size: 24px;
+												letter-spacing: .5px;
+												font-family: 'Comfortaa', cursive;
+												}
+												#bar_input.placehold{
+																	font-family: sans-serif !important;
+																	font-size: 20px;
+																	}
+
+					#bar_avatar{
+								position: absolute;
+								top: 50%;
+								right: 0;
+								margin-top: -16px;
+								width: 32px;
+								height: 32px;
+								background: url(https://pbs.twimg.com/profile_images/1062767896269590528/vOsDt9up_400x400.jpg) #57dc00;
+								background-size: contain;
+								border-radius: 50%;
+								}
+
+		#live_video{
+				position: absolute;
+				top: 100px;
+				left: 48px;
+				width: 854px;
+				height: 480px;
+				background: url(platzi_white.png) hsl(96deg 100% 43%) no-repeat center;
+				background-size: 181px;
+				z-index: 100;
+				border-radius: 4px;
+				box-shadow: 0 4px 12px 2px hsl(0deg 0% 0% / 40%);
+				}
+
+		#live_chat{
+				position: absolute;
+				top: 100px;
+				left: 930px;
+				right: 48px;
+				height: 480px;
+				background: url(platzi_favicon.png) hsl(0deg 0% 100%) no-repeat;
+				background-position: 16px 16px;
+				background-size: 24px;
+				box-shadow: 0 4px 12px 2px hsl(0deg 0% 0% / 40%);
+				border-radius: 4px;
+				}
+
+		#live_resume{
+				margin-top: 608px;
+				height: auto;
+				padding: 0 48px;
+				}
+				#live_resume_content{
+									padding: 28px;
+									background: #ffffff1c;
+									color: hsl(0 0% 100% / 0.7);
+									font-size: 12px;
+									}
+									#live_resume_content_title{
+																display: block;
+																margin-bottom: 28px;
+																color: white;
+																font-size: initial;
+																font-family: 'Comfortaa', cursive;																
+																}
+									#live_resume_content b{
+														cursor: pointer;
+														color: #58db00 !important
+														}
+
+
+		.mode_developer_activated #live_video{
+											display: none;
+											}
+
+		.mode_developer_activated #live_resume{
+											position: absolute;
+											width: 854px;
+											margin-top: 100px;
+											}
+
+		.mode_developer_activated #mode_developer_message{ display: none; }
+
+
+
+		#play{
+			position: absolute;
+			bottom: 30px;
+			left: 30px;
+			border: 0;
+			background: transparent;
+			box-sizing: border-box;
+			width: 0;
+			height: 24px;
+			border-color: transparent transparent transparent #10103f;
+			cursor: pointer;
+			border-style: solid;
+			border-width: 12px 0 12px 20px;
+			}
+
+
+
+
+
+
+
+
+
+
+@media( max-width: 600px ){
+
+						#bar_wrap{
+								position: absolute;
+								height: 100%;
+								left: 18px;
+								right: 18px;
+								}
+						}
+
+#borrador div{
+			position: absolute;
+			width: 300px;
+			left: 50%;
+			margin-left: -150px;
+			bottom: 40px;
+			color: #fff;
+			font-size: 12px;
+			}
+
+@media( min-width: 1200px ){
+							#borrador{
+									display: none;
+									}
+							}
+
+	</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+
+	<div id="borrador">
+						<div>
+							! éste borrador sólo es apto para resoluciones entre 1200px y 1920px.
+							<br><br>
+							de ninguna manera es un ejemplo de código ni de diseño estructural, solo es un borrador conceptual.
+							<br><br>
+							la idea es presentar una interfaz desacopable, @hallnewman.</div>
+						</div>
+	
+	<div id="splash"></div>
+
+
+	<div id="bar">
+				<div id="bar_wrap">
+								<div id="bar_logo"></div>
+								<div id="bar_wrap_input">
+														<input type="text" name="bar_input" id="bar_input" placeholder="Platzi" spellcheck="false">
+														</div>
+								<div id="bar_avatar" title="@freddier"></div>
+								</div>
+				</div>
+
+
+	<div id="live_video" title="Platzi Live Video">
+												<div id="play"></div>
+												</div>
+
+
+	<div id="live_chat"  title="Platzi Live Chat"></div>
+
+	<div id="live_resume">
+						<div id="live_resume_content">
+													<span id="live_resume_content_title">resume & resources</span>
+													! éste borrador sólo es apto para resoluciones entre 1200px y 1920px.
+													<br>
+													de ninguna manera es un ejemplo de código ni de diseño estructural, solo es un borrador conceptual.
+													<br>
+													la idea es presentar una interfaz desacopable, apta para trabajar en multipantalla (modo programador); <span id="mode_developer_message">para activar da <b id="mode_developer">clic aquí</b>.</span>
+													<br>
+													<br>
+													@hallnewman.
+													</div>
+													</div>
+													</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+/*
+function fade(c,d,e,f){var g=new Date,b={duration:e,callback:f||function(){},alpha:function(a){a=this.progress;return.5-Math.cos(a*Math.PI)/2},step:function(a){d.style.opacity="in"==c?0+a:1-a}},h=setInterval(function(){var a=(new Date-g)/b.duration;1<a&&(a=1);b.progress=a;b.step(b.alpha(a));1==a&&(clearInterval(h),b.callback())},b.delay||10)};
+
+setTimeout(function(){
+				//	fade('out', document.getElementById('splashw'), 300, function(){
+																			//	document.getElementById('splashw').style.display = 'none';
+
+																				fade('out', document.getElementById('splash'), 900, function(){
+																																				document.getElementById('splash').style.display = 'none';
+																																				})
+																			//	})
+					}, 1000)
+
+
+
+	var body_color = 248;
+
+	setTimeout(function(){
+						setInterval(function(){ body_color = body_color > 360? 0 : body_color + 1;
+							document.getElementById('borrador').style.backgroundColor = 'hsl('+body_color+',30%,10%)';
+							document.body.style.background = 'hsl('+body_color+',10%,24%)';
+							}, 200)
+						}, 1000)
+*/
+
+
+
+
+
+
+document.getElementById('mode_developer').addEventListener('click', function(){
+																			window.open("platzi_live_video.html" , "Platzi Live Video" , "width=854,height=480,scrollbars=NO")
+																	//		setTimeout(function(){ window.open("platzi_live_chat.html" , "Platzi Live Chat" , "width=376,height=480,scrollbars=NO")}, 500)
+																			document.body.className = 'mode_developer_activated';
+																			})
+
+
+
+
+
+</script>
+
+</body>
+</html>
